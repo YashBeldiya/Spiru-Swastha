@@ -1,0 +1,67 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const NewPassword = () => {
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+    setError("");
+    console.log("New password set:", password);
+  };
+
+  const after_pw_change_login = () => {
+    navigate('/login')
+  }
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-[#e9f2fb]">
+      <div className="max-w-[500px] rounded-[40px] border-4 border-white bg-gradient-to-b from-white to-[#f4f7fb] p-6 shadow-[0_30px_30px_-20px_rgba(133,189,215,0.88)]">
+        <h1 className="text-center text-3xl font-black text-[#1089d3]">New Password</h1>
+        <p className="mt-4 text-center text-sm text-gray-500">
+          Enter your new password below
+        </p>
+
+        <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+          <input
+            type="password"
+            placeholder="New Password"
+            className="w-full rounded-[20px] border-none bg-white px-4 py-3 shadow-[0_10px_10px_-5px_#cff0ff] focus:border-[#12b1d1] focus:outline-none"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            className="w-full rounded-[20px] border-none bg-white px-4 py-3 shadow-[0_10px_10px_-5px_#cff0ff] focus:border-[#12b1d1] focus:outline-none"
+            required
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+          {error && <p className="text-sm text-red-500">{error}</p>}
+
+          <button
+            type="button" onClick={after_pw_change_login}
+            className="w-full rounded-[20px] bg-gradient-to-r from-[#1089d3] to-[#12b1d1] py-3 font-bold text-white shadow-[0_20px_10px_-15px_rgba(133,189,215,0.88)] transition-transform duration-200 hover:scale-[1.03] hover:shadow-[0_23px_10px_-20px_rgba(133,189,215,0.88)] active:scale-95 active:shadow-[0_15px_10px_-10px_rgba(133,189,215,0.88)]"
+          >
+            Save Password
+          </button>
+        </form>
+
+        <a href="#" className="mt-4 block text-center text-[9px] text-[#0099ff]">
+          Learn user licence agreement
+        </a>
+      </div>
+    </div>
+  );
+};
+
+export default NewPassword;

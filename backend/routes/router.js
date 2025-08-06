@@ -1,0 +1,25 @@
+const router = require('express').Router()
+const category = require('./category')
+const product = require('./product')
+const auth = require('./auth')
+const whishlist = require('./whishlist')
+const addcart = require('./addcart')
+const content = require('./content')
+const media = require('./media')
+const review = require('./review')
+const order = require('./order')
+const address = require('./address')
+
+
+router.use('/auth',auth)
+router.use('/category',category)
+router.use('/product',product)
+router.use('/content',content)
+router.use('/whishlist',whishlist)
+router.use('/add-cart',addcart)
+router.use('/media',media)
+router.use('/review',review)
+router.use('/order',order)
+router.use('/address',address)
+
+module.exports = router
