@@ -17,7 +17,7 @@ const OrderManagement = () => {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('http://localhost:3000/api/order/get');
+      const response = await axios.get('https://spiru-backend.onrender.com/api/order/get');
       setOrders(response.data.data);
       setError(null);
     } catch (err) {
@@ -31,7 +31,7 @@ const OrderManagement = () => {
   const updateOrderStatus = async (orderId, newStatus) => {
     setLoading(true);
     try {
-      const response = await axios.put(`http://localhost:3000/api/order/update-status/${orderId}`, { status: newStatus });
+      const response = await axios.put(`https://spiru-backend.onrender.com/api/order/update-status/${orderId}`, { status: newStatus });
       if (response.data.success) {
         setOrders(orders.map(order =>
           order._id === orderId

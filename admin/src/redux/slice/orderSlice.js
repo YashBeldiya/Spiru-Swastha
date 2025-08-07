@@ -5,7 +5,7 @@ export const createOrder = createAsyncThunk(
   "order/createOrder",
   async (orderData, { rejectWithValue }) => {
     try {
-      const response = await axios.post("http://localhost:3000/api/order/add", orderData);
+      const response = await axios.post("https://spiru-backend.onrender.com/api/order/add", orderData);
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Failed to create order");
@@ -17,7 +17,7 @@ export const fetchOrders = createAsyncThunk(
   "order/fetchOrders",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:3000/api/order/get");
+      const response = await axios.get("https://spiru-backend.onrender.com/api/order/get");
       return response.data.data;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || "Failed to fetch orders");

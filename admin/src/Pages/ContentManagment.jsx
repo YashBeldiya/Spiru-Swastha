@@ -33,7 +33,7 @@ const ContentManagement = () => {
   const getAllProducts =async () => {
     try {
       setLoading(true);
-        const productsRes = await axios.get('http://localhost:3000/api/product/get-all');
+        const productsRes = await axios.get('https://spiru-backend.onrender.com/api/product/get-all');
         // console.log(productsRes.data.data)
         setProducts(productsRes.data.data);
     } catch (error) {
@@ -44,7 +44,7 @@ const ContentManagement = () => {
   // Fetch content
   const getAllContent =async () => {
     try {
-      const contentRes = await axios.get('http://localhost:3000/api/content/getall');
+      const contentRes = await axios.get('https://spiru-backend.onrender.com/api/content/getall');
         setContentItems([...contentRes.data.data]);
         setLoading(false);
     } catch (error) {
@@ -126,13 +126,13 @@ const ContentManagement = () => {
 
       if (editingContent) {
         // Update existing content
-        const res = await axios.post(`http://localhost:3000/api/content/update/${editingContent._id}`, contentData);
+        const res = await axios.post(`https://spiru-backend.onrender.com/api/content/update/${editingContent._id}`, contentData);
         setContentItems(contentItems.map(item => 
           item._id === editingContent._id ? res.data : item
         ));
       } else {
         // Create new content
-        const res = await axios.post('http://localhost:3000/api/content/create', contentData);
+        const res = await axios.post('https://spiru-backend.onrender.com/api/content/create', contentData);
         console.log(res)
         setContentItems([...contentItems, res.data.data]);
       }
@@ -181,7 +181,7 @@ const ContentManagement = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this content?')) {
       try {
-        await axios.delete(`http://localhost:3000/api/content/delete/${id}`);
+        await axios.delete(`https://spiru-backend.onrender.com/api/content/delete/${id}`);
         setContentItems(contentItems.filter(item => item._id !== id));
       } catch (err) {
         setError(err.response?.data?.message || err.message);

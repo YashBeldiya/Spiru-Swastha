@@ -25,7 +25,7 @@ const Media = () => {
 
     const getAllMedia = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/media/get');
+            const response = await axios.get('https://spiru-backend.onrender.com/api/media/get');
             setMediaItems(response.data.data);
         } catch (error) {
             console.error('Error fetching media:', error);
@@ -88,7 +88,7 @@ const Media = () => {
                 formDataToSend.append('media', file); // Note: 'media' must match your backend expectation
             });
 
-            const response = await axios.post('http://localhost:3000/api/media/create', formDataToSend, {
+            const response = await axios.post('https://spiru-backend.onrender.com/api/media/create', formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },
@@ -119,7 +119,7 @@ const Media = () => {
     const handleDelete = async (id) => {
         if (window.confirm('Are you sure you want to delete this media item?')) {
             try {
-                const response = await axios.delete(`http://localhost:3000/api/media/delete/${id}`);
+                const response = await axios.delete(`https://spiru-backend.onrender.com/api/media/delete/${id}`);
 
                 if (response.data.success) {
                     // Show success message
