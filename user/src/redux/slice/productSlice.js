@@ -5,7 +5,7 @@ import { act } from "react";
 export const fetchProductdata = createAsyncThunk(
     'products/fetchProductdata',
     async () => {
-        const response = await axios.get('http://localhost:3000/api/product/get-all')
+        const response = await axios.get('https://spiru-backend.onrender.com/api/product/get-all')
         return response.data.data
     }
 )
@@ -13,7 +13,7 @@ export const fetchProductdata = createAsyncThunk(
 export const newLaunchesData = createAsyncThunk(
     'products/newLaunchesData',
     async () => {
-        const response = await axios.get('http://localhost:3000/api/product/new-launch')
+        const response = await axios.get('https://spiru-backend.onrender.com/api/product/new-launch')
         // console.log(response.data.data)
         return response.data.data
     }
@@ -22,7 +22,7 @@ export const newLaunchesData = createAsyncThunk(
 export const bestSellerData = createAsyncThunk(
     'products/bestSellerData',
     async () => {
-        const response = await axios.get('http://localhost:3000/api/product/best-seller')
+        const response = await axios.get('https://spiru-backend.onrender.com/api/product/best-seller')
         return response.data.data
     }
 )
@@ -31,7 +31,7 @@ export const bestSellerData = createAsyncThunk(
 export const fetchProductById = createAsyncThunk(
     'products/fetchProductById',
     async (productId) => {
-        const response = await axios.get(`http://localhost:3000/api/product/get/${productId}`)
+        const response = await axios.get(`https://spiru-backend.onrender.com/api/product/get/${productId}`)
         return response.data.data
     }
 )

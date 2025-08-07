@@ -6,7 +6,7 @@ export const fetchReviews = createAsyncThunk(
     'reviews/fetchReviews',
     async (productId, { rejectWithValue }) => {
         try {
-            const response = await axios.get(`/api/review/get/${productId}`);
+            const response = await axios.get(`https://spiru-backend.onrender.com/api/review/get/${productId}`);
             // Map API fields to match component expectations
             const mappedReviews = response.data.data.map(review => ({
                 ...review,
@@ -31,7 +31,7 @@ export const addReview = createAsyncThunk(
             if (!auth.isLoggedIn || !auth.user?._id) {
                 return rejectWithValue('Please log in to submit a review');
             }
-            const response = await axios.post('/api/review/create', {
+            const response = await axios.post('https://spiru-backend.onrender.com/api/review/create', {
                 product: reviewData.productId,
                 user: auth.user._id,
                 count: reviewData.rating,
@@ -60,7 +60,7 @@ export const fetchTopReviewedProducts = createAsyncThunk(
     'reviews/fetchTopReviewedProducts',
     async (_, { rejectWithValue }) => {
       try {
-        const response = await axios.get('/api/review/top-reviewed-products');
+        const response = await axios.get('https://spiru-backend.onrender.com/api/review/top-reviewed-products');
         return response.data.data;
       } catch (error) {
         return rejectWithValue(error.response?.data?.message || 'Failed to fetch top reviewed products');

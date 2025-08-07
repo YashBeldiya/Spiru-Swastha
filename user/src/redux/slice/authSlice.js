@@ -6,7 +6,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (credentials, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/login', credentials);
+      const response = await axios.post('https://spiru-backend.onrender.com/api/auth/login', credentials);
       localStorage.setItem('userData',JSON.stringify(response.data.user))
       return response.data.data; // Assuming the token is in response.data.data
     } catch (error) {
@@ -20,7 +20,7 @@ export const registerUser = createAsyncThunk(
   'auth/registerUser',
   async (userData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/register', {
+      const response = await axios.post('https://spiru-backend.onrender.com/api/auth/register', {
         name: userData.firstName,
         lastName: userData.lastName,
         email: userData.email,

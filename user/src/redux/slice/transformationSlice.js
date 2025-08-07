@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchTransformationVideos = createAsyncThunk(
     "transformation/fetchTransformationVideos",
     async () => {
-        const response = await axios.get("http://localhost:3000/api/media/category-by-media/productVideo");
+        const response = await axios.get("https://spiru-backend.onrender.com/api/media/category-by-media/productVideo");
         return response.data.data
     }
 )
