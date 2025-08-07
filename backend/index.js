@@ -19,6 +19,9 @@ app.use(express.json())
 app.use('/media',express.static(path.join(__dirname, 'media')));
 app.use('/api',router)
 app.use(errorHandler)
+app.get('/', (req, res) => {
+    res.send({ success: true, message: 'Backend API is working' });
+  });
 
 
 app.listen(port)
