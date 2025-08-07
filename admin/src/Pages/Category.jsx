@@ -25,7 +25,7 @@ const Categories = () => {
   const fetchMediaLibrary = async () => {
     try {
       setMediaLoading(true);
-      const res = await axios.get('http://localhost:3000/api/media/get').then((res) => {
+      const res = await axios.get('https://spiru-backend.onrender.com/api/media/get').then((res) => {
         setMediaLibrary(res.data.data);
       })
     } catch (err) {
@@ -38,7 +38,7 @@ const Categories = () => {
 
   const getAllData = async () => {
     try {
-      const res = await axios.get('http://localhost:3000/api/category/all-category');
+      const res = await axios.get('https://spiru-backend.onrender.com/api/category/all-category');
       return res.data;
     } catch (err) {
       console.error("API error:", err.message);
@@ -81,12 +81,12 @@ const Categories = () => {
       let response;
       if (editingCategory) {
         response = await axios.post(
-          `http://localhost:3000/api/category/update/${editingCategory._id}`,
+          `https://spiru-backend.onrender.com/api/category/update/${editingCategory._id}`,
           payload
         );
       } else {
         response = await axios.post(
-          'http://localhost:3000/api/category/create',
+          'https://spiru-backend.onrender.com/api/category/create',
           payload
         );
       }
@@ -119,7 +119,7 @@ const Categories = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this category?')) {
       try {
-        await axios.delete(`http://localhost:3000/api/category/delete/${id}`);
+        await axios.delete(`https://spiru-backend.onrender.com/api/category/delete/${id}`);
         const updated = await getAllData();
         setCategories(updated.data);
       } catch (error) {
