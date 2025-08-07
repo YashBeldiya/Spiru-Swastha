@@ -15,13 +15,17 @@ app.use(cors(
 ));
 
 app.use(express.json())
-// app.use(express.urlencoded({ extended: true }));
-app.use('/media',express.static(path.join(__dirname, 'media')));
-app.use('/api',router)
-app.use(errorHandler)
 app.get('/', (req, res) => {
     res.send({ success: true, message: 'Backend API is working' });
   });
+// app.use(express.urlencoded({ extended: true }));
+app.use('/media',express.static(path.join(__dirname, 'media')));
+app.use('/api',router)
+app.use((req, res) => {
+    return res.status(404).json({ success: false, message: "Invalid API Path" });
+});
+app.use(errorHandler)
+
 
 
 app.listen(port)
