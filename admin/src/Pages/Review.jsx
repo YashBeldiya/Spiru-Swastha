@@ -21,7 +21,8 @@ const Review = () => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.get('https://spiru-backend.onrender.com/api/review/getall');
+      const response = await axios.get('http://localhost:3000/api/review/getall');
+      // const response = await axios.get('https://spiru-backend.onrender.com/api/review/getall');
       // Map API data to match component's expected structure
       const mappedReviews = response.data.data.map(review => ({
         id: review._id,
@@ -57,7 +58,8 @@ const Review = () => {
     const apiStatus = newStatus === 'Pending' ? 'pending' : newStatus;
     console.log('Sending status to API:', apiStatus); // Debug log
     try {
-      await axios.post(`https://spiru-backend.onrender.com/api/review/update-status/${reviewId}`, { status: apiStatus });
+      await axios.post(`http://localhost:3000/api/review/update-status/${reviewId}`, { status: apiStatus });
+      // await axios.post(`https://spiru-backend.onrender.com/api/review/update-status/${reviewId}`, { status: apiStatus });
       setReviews(reviews.map(review =>
         review.id === reviewId ? { ...review, status: newStatus } : review
       ));
@@ -79,7 +81,8 @@ const Review = () => {
     }
     if (window.confirm('Are you sure you want to delete this review?')) {
       try {
-        await axios.delete(`https://spiru-backend.onrender.com/api/review/delete/${reviewId}`);
+        await axios.delete(`http://localhost:3000/api/review/delete/${reviewId}`);
+        // await axios.delete(`https://spiru-backend.onrender.com/api/review/delete/${reviewId}`);
         setReviews(reviews.filter(review => review.id !== reviewId));
         setShowModal(false);
       } catch (err) {

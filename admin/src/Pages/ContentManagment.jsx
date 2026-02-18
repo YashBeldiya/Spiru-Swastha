@@ -33,7 +33,8 @@ const ContentManagement = () => {
   const getAllProducts =async () => {
     try {
       setLoading(true);
-        const productsRes = await axios.get('https://spiru-backend.onrender.com/api/product/get-all');
+        // const productsRes = await axios.get('https://spiru-backend.onrender.com/api/product/get-all');
+        const productsRes = await axios.get('http://localhost:3000/api/product/get-all');
         // console.log(productsRes.data.data)
         setProducts(productsRes.data.data);
     } catch (error) {
@@ -44,7 +45,8 @@ const ContentManagement = () => {
   // Fetch content
   const getAllContent =async () => {
     try {
-      const contentRes = await axios.get('https://spiru-backend.onrender.com/api/content/getall');
+      // const contentRes = await axios.get('https://spiru-backend.onrender.com/api/content/getall');
+      const contentRes = await axios.get('http://localhost:3000/api/content/getall');
         setContentItems([...contentRes.data.data]);
         setLoading(false);
     } catch (error) {

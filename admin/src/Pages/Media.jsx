@@ -25,7 +25,7 @@ const Media = () => {
 
     const getAllMedia = async () => {
         try {
-            const response = await axios.get('https://spiru-backend.onrender.com/api/media/get');
+            const response = await axios.get('http://localhost:3000/api/media/get');
             setMediaItems(response.data.data);
         } catch (error) {
             console.error('Error fetching media:', error);

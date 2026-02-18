@@ -4,7 +4,8 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 // Base URL for the API (adjust as needed)
-const API_URL = 'https://spiru-backend.onrender.com/api/whishlist';
+const API_URL = 'http://localhost:3000/api/whishlist';
+// const API_URL = 'https://spiru-backend.onrender.com/api/whishlist';
 
 // Async thunk to fetch wishlist
 export const fetchWishlist = createAsyncThunk(

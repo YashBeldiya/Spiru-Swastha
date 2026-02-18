@@ -61,7 +61,8 @@ const Products = () => {
     const getAllProducts = async () => {
         try {
             setLoading(true);
-            const res = await axios.get('https://spiru-backend.onrender.com/api/product/get-all');
+            // const res = await axios.get('https://spiru-backend.onrender.com/api/product/get-all');
+            const res = await axios.get('http://localhost:3000/api/product/get-all');
             setProducts(res.data.data);
         } catch (err) {
             console.error("API error:", err.message);
@@ -73,7 +74,8 @@ const Products = () => {
 
     const getAllCategories = async () => {
         try {
-            const res = await axios.get('https://spiru-backend.onrender.com/api/category/all-category');
+            const res = await axios.get('http://localhost:3000/api/category/all-category');
+            // const res = await axios.get('https://spiru-backend.onrender.com/api/category/all-category');
             setCategories(res.data.data);
         } catch (err) {
             console.error("API error:", err.message);
@@ -83,7 +85,8 @@ const Products = () => {
     const fetchMediaLibrary = async () => {
         try {
             setMediaLoading(true);
-            const res = await axios.get('https://spiru-backend.onrender.com/api/media/get');
+            const res = await axios.get('http://localhost:3000.com/api/media/get');
+            // const res = await axios.get('https://spiru-backend.onrender.com/api/media/get');
             setMediaLibrary(res.data.data);
         } catch (err) {
             console.error("Failed to fetch media:", err);
@@ -95,7 +98,8 @@ const Products = () => {
 
     const createProduct = async (productData) => {
         try {
-            const response = await axios.post('https://spiru-backend.onrender.com/api/product/create', productData);
+            const response = await axios.post('http://localhost:3000/api/product/create', productData);
+            // const response = await axios.post('https://spiru-backend.onrender.com/api/product/create', productData);
             return response.data;
         } catch (error) {
             console.error('Product Creation Failed:', error);
@@ -110,7 +114,8 @@ const Products = () => {
     const updateProduct = async (id, productData) => {
         try {
             setLoading(true);
-            const res = await axios.post(`https://spiru-backend.onrender.com/api/product/update/${id}`, productData);
+            // const res = await axios.post(`https://spiru-backend.onrender.com/api/product/update/${id}`, productData);
+            const res = await axios.post(`http://localhost:3000/api/product/update/${id}`, productData);
             return res.data;
         } catch (err) {
             console.error("Product update failed:", err);
@@ -128,7 +133,8 @@ const Products = () => {
     const deleteProduct = async (id) => {
         try {
             setLoading(true);
-            await axios.delete(`https://spiru-backend.onrender.com/api/product/delete/${id}`);
+            await axios.delete(`http://localhost:3000/api/product/delete/${id}`);
+            // await axios.delete(`https://spiru-backend.onrender.com/api/product/delete/${id}`);
             await getAllProducts();
             setCurrentPage(1);
         } catch (err) {
@@ -165,6 +171,7 @@ const Products = () => {
                 benefits: editingProduct.benefits?.map(b => ({
                     ...b,
                     preview: b.icon ? `https://spiru-backend.onrender.com${b.icon.replace('../public', '')}` : ''
+                    // preview: b.icon ? `https://spiru-backend.onrender.com${b.icon.replace('../public', '')}` : ''
                 })) || [],
                 variants: editingProduct.variants.map(v => ({
                     ...v,

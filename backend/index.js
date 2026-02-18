@@ -6,6 +6,7 @@ require('./config/dbConnect')
 const app = express()
 const port = 3000
 const path = require('path');
+const connectDB = require('./config/dbConnect')
 
 app.use(cors(
     {
@@ -27,5 +28,5 @@ app.use((req, res) => {
 app.use(errorHandler)
 
 
-
+connectDB();
 app.listen(port)

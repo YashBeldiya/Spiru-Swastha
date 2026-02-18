@@ -4,7 +4,8 @@ import axios from "axios";
 export const fetchCategorydata = createAsyncThunk(
     "categories/fetchCategorydata",
     async () => {
-        const response = await axios.get("https://spiru-backend.onrender.com/api/category/all-category");
+        const response = await axios.get("http://localhost:3000/api/category/all-category");
+        // const response = await axios.get("https://spiru-backend.onrender.com/api/category/all-category");
         return response.data.data
     }
 )

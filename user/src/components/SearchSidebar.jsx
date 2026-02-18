@@ -76,19 +76,27 @@ const SearchSidebar = ({ isOpen, onClose }) => {
             <h3 className="text-sm font-semibold mb-3">Need some inspiration?</h3>
             {filteredProducts.length > 0 ? (
               <div className="space-y-4 pb-4">
-                {filteredProducts.slice(0, 5).map((item) => (
+                {filteredProducts.slice(0, 5).map((item,index) => (
                     
-                  <div key={item.id} className="flex items-center gap-4">
-                    {/* {console.log(item)} */}
-                    <img
-                      src={item.proImage}
-                      alt={item.title}
-                      className="w-16 h-16 object-cover rounded"
-                    />
-                    <span className="text-sm font-medium line-clamp-2">
-                      {item.title}
-                    </span>
-                  </div>
+                  // <div key={item.id} className="flex items-center gap-4">
+                  //   {/* {console.log(item)} */}
+                  //   <img
+                  //     src={item.proImage}
+                  //     alt={item.title}
+                  //     className="w-16 h-16 object-cover rounded"
+                  //   />
+                  //   <span className="text-sm font-medium line-clamp-2">
+                  //     {item.title}
+                  //   </span>
+                  // </div>
+                  <div key={`${item.id}-${index}`} className="flex items-center gap-4">
+    <img
+      src={item.proImage}
+      alt={item.title}
+      className="w-16 h-16 object-cover rounded"
+    />
+    <span className="text-sm font-medium line-clamp-2">{item.title}</span>
+  </div>
                 ))}
               </div>
             ) : (
