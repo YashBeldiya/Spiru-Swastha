@@ -4,8 +4,8 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 // Base URL for the API (adjust as needed)
-const API_URL = 'http://localhost:3000/api/whishlist';
-// const API_URL = 'https://spiru-backend.onrender.com/api/whishlist';
+// const API_URL = 'http://localhost:3000/api/whishlist';
+const API_URL = 'https://spiru-backend.onrender.com/api/whishlist';
 
 // Async thunk to fetch wishlist
 export const fetchWishlist = createAsyncThunk(
@@ -44,7 +44,8 @@ export const toggleWishlistItem = createAsyncThunk(
         const response = await axios.post(`${API_URL}/add`, { userId, productId });
         if (response.data.success) {
           // Fetch the product details to include in the wishlist state
-          const productResponse = await axios.get(`http://localhost:3000/api/product/get/${productId}`);
+          // const productResponse = await axios.get(`http://localhost:3000/api/product/get/${productId}`);
+          const productResponse = await axios.get(`http://spiru-backend.onrender.com/api/product/get/${productId}`);
           return { product: productResponse.data.data, action: 'add' };
         }
         return rejectWithValue(response.data.message);

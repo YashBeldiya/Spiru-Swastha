@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Base URL for your API
-const API_URL = 'http://localhost:3000/api';
-// const API_URL = 'https://spiru-backend.onrender.com/api';
+// const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://spiru-backend.onrender.com/api';
 
 // Async thunks for CRUD operations
 export const fetchAddresses = createAsyncThunk(

@@ -6,8 +6,8 @@ export const fetchContentByProductId = createAsyncThunk(
   'content/fetchByProductId',
   async (productId, { rejectWithValue }) => {
     try {
-      // const response = await axios.get(`https://spiru-backend.onrender.com/api/content/product/${productId}`);
-      const response = await axios.get(`http://localhost:3000/api/content/product/${productId}`);
+      const response = await axios.get(`https://spiru-backend.onrender.com/api/content/product/${productId}`);
+      // const response = await axios.get(`http://localhost:3000/api/content/product/${productId}`);
       return response.data.data; // Assuming API returns content in `data` field
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || 'Failed to fetch content');
